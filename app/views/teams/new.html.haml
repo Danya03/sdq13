@@ -1,0 +1,12 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.teams.new')
+  %li
+    = link_to t('headers.teams.index'), teams_path
+  %li
+    Редактирование
+%h1=t('headers.teams.new')
+
+= render 'form'
+
+= link_to 'Назад', teams_path, class: "btn btn-primary"

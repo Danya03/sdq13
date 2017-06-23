@@ -1,0 +1,13 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.teams.edit') + " " + @team.team_name
+  %li
+    = link_to t('headers.teams.index'), teams_path
+  %li
+    Редактирование
+%h1=t('headers.teams.index')
+
+= render 'form'
+
+= link_to 'Показать', @team, class: "btn btn-primary"
+= link_to 'Назад', teams_path, class: "btn btn-primary"

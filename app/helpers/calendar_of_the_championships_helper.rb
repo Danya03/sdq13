@@ -1,0 +1,2 @@
+module CalendarOfTheChampionshipsHelper
+end

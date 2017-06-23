@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  surname: MyString
+  firstname: MyString
+  bday: 2017-05-07
+  country: MyString
+  number_of_wins: 1
+
+two:
+  surname: MyString
+  firstname: MyString
+  bday: 2017-05-07
+  country: MyString
+  number_of_wins: 1

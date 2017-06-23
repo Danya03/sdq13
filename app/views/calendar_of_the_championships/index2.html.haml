@@ -1,0 +1,23 @@
+%h1= t('headers.calendar_of_the_championships.index')
+%table.table-striped.table-hover
+  %thead
+    %tr
+      %th= CalendarOfTheChampionship.human_attribute_name(:gp_name)
+      %th= CalendarOfTheChampionship.human_attribute_name(:number)
+      %th= CalendarOfTheChampionship.human_attribute_name(:race_date)
+      %th= CalendarOfTheChampionship.human_attribute_name(:country)
+      %th= CalendarOfTheChampionship.human_attribute_name(:location)
+
+  %tbody
+    - @calendar_of_the_championships.each do |calendar_of_the_championship|
+      %tr
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:gp_name)}}
+          = calendar_of_the_championship.gp_name
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:number)}}
+          = calendar_of_the_championship.number
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:race_date)}}
+          = calendar_of_the_championship.race_date
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:country)}}
+          = calendar_of_the_championship.country
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:location)}}
+          = calendar_of_the_championship.location

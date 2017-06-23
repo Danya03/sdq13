@@ -1,0 +1,28 @@
+=breadcrumb_tag do
+  %li.active
+    = @calendar_of_the_championship.gp_name
+  %li
+    = link_to t('headers.calendar_of_the_championships.index'), calendar_of_the_championships_path
+  %li
+    Редактирование
+%h1= @calendar_of_the_championship.gp_name
+
+%dl
+  %dt= CalendarOfTheChampionship.human_attribute_name(:gp_name)
+  %dd= @calendar_of_the_championship.gp_name
+
+  %dt= CalendarOfTheChampionship.human_attribute_name(:number)
+  %dd= @calendar_of_the_championship.number
+
+  %dt= CalendarOfTheChampionship.human_attribute_name(:race_date)
+  %dd= @calendar_of_the_championship.race_date
+
+  %dt= CalendarOfTheChampionship.human_attribute_name(:country)
+  %dd= @calendar_of_the_championship.country
+
+  %dt= CalendarOfTheChampionship.human_attribute_name(:location)
+  %dd= @calendar_of_the_championship.location
+
+
+= link_to 'Редактировать', edit_calendar_of_the_championship_path(@calendar_of_the_championship), class: "btn btn-primary"
+= link_to 'Назад', calendar_of_the_championships_path, class: "btn btn-primary"

@@ -1,0 +1,99 @@
+= form_for @team do |f|
+  = error_messages_for @team
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :team_name
+        = f.text_field :team_name, class: 'form-control'
+        = f.error_messages_for(:team_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :motor_manufacturer
+        = f.text_field :motor_manufacturer, class: 'form-control'
+        = f.error_messages_for(:motor_manufacturer)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :car_number1
+        = f.text_field :car_number1, class: 'form-control'
+        = f.error_messages_for(:car_number1)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :car_number2
+        = f.text_field :car_number2, class: 'form-control'
+        = f.error_messages_for(:car_number2)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :team_country
+        = f.text_field :team_country, class: 'form-control'
+        = f.error_messages_for(:team_country)
+  %hr
+  = f.fields_for :racer1 do |ff|
+    %h3 Первый гонщик
+    .field
+    .col-md-3
+      = ff.label :surname
+      = ff.text_field :surname
+    .field
+    .col-md-3
+      = ff.label :firstname
+      = ff.text_field :firstname
+    .field
+    .col-md-3
+      = ff.label :bday
+      .input-group.date.datepicker
+        = ff.text_field(:bday, value: lnil(ff.object.bday),
+        class: 'form-control')
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+    .field
+    .col-md-3
+      = ff.label :country
+      = ff.text_field :country
+    .field
+    .col-md-3
+      = ff.label :number_of_wins
+      = ff.number_field :number_of_wins
+    .field
+      = ff.hidden_field :id
+  %hr
+
+  = f.fields_for :racer2 do |ff|
+    %h3 Второй гонщик
+
+    .field
+    .col-md-3
+      = ff.label :surname
+      = ff.text_field :surname
+    .field
+    .col-md-3
+      = ff.label :firstname
+      = ff.text_field :firstname
+    .field
+    .col-md-3
+      = ff.label :bday
+      .input-group.date.datepicker
+        = ff.text_field(:bday, value: lnil(ff.object.bday),
+        class: 'form-control')
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+    .field
+    .col-md-3
+      = ff.label :country
+      = ff.text_field :country
+    .field
+    .col-md-3
+      = ff.label :number_of_wins
+      = ff.number_field :number_of_wins
+    .field
+      = ff.hidden_field :id
+  .actions.margin-small-top
+    = f.submit nil, class: 'btn btn-primary'
+
+   
+
+

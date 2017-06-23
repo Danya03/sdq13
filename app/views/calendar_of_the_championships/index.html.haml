@@ -1,0 +1,45 @@
+%h1= t('headers.calendar_of_the_championships.index')
+=breadcrumb_tag do
+  %li.active
+    = t('headers.calendar_of_the_championships.index')
+  %li
+    Редактирование
+%table.table-striped.table-hover
+  %caption
+    = link_to new_calendar_of_the_championship_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.calendar_of_the_championship')
+  %thead
+    %tr
+      %th= CalendarOfTheChampionship.human_attribute_name(:gp_name)
+      %th= CalendarOfTheChampionship.human_attribute_name(:number)
+      %th= CalendarOfTheChampionship.human_attribute_name(:race_date)
+      %th= CalendarOfTheChampionship.human_attribute_name(:country)
+      %th= CalendarOfTheChampionship.human_attribute_name(:location)
+      %th
+
+  %tbody
+    - @calendar_of_the_championships.each do |calendar_of_the_championship|
+      %tr
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:gp_name)}}
+          = calendar_of_the_championship.gp_name
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:number)}}
+          = calendar_of_the_championship.number
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:race_date)}}
+          = calendar_of_the_championship.race_date
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:country)}}
+          = calendar_of_the_championship.country
+        %td{:data => {:label => CalendarOfTheChampionship.human_attribute_name(:location)}}
+          = calendar_of_the_championship.location
+        %td.right
+          = link_to calendar_of_the_championship, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          = link_to edit_calendar_of_the_championship_path(calendar_of_the_championship), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to calendar_of_the_championship, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.calendar_of_the_championship') },
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')

@@ -1,0 +1,25 @@
+= form_for @racer do |f|
+  - if @racer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@racer.errors.count, "error")} prohibited this racer from being saved:"
+      %ul
+        - @racer.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :surname
+    = f.text_field :surname
+  .field
+    = f.label :firstname
+    = f.text_field :firstname
+  .field
+    = f.label :bday
+    = f.date_select :bday
+  .field
+    = f.label :country
+    = f.text_field :country
+  .field
+    = f.label :number_of_wins
+    = f.number_field :number_of_wins
+  .actions
+    = f.submit 'Сохранить', class: "btn btn-primary"

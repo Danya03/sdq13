@@ -1,0 +1,39 @@
+= form_for @calendar_of_the_championship do |f|
+  = error_messages_for @calendar_of_the_championship
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :gp_name
+        = f.text_field :gp_name, class: 'form-control'
+        = f.error_messages_for(:gp_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :number
+        = f.text_field :number, class: 'form-control'
+        = f.error_messages_for(:number)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :race_date
+        .input-group.date.datepicker
+          = f.text_field :race_date, value: lnil(f.object.race_date), class: 'form-control'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:race_date)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :country
+        = f.text_field :country, class: 'form-control'
+        = f.error_messages_for(:country)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :location
+        = f.text_field :location, class: 'form-control'
+        = f.error_messages_for(:location)
+
+  .actions.margin-small-top
+    = f.submit nil, class: 'btn btn-primary'

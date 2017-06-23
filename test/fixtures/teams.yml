@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_name: MyString
+  motor_manufacturer: MyString
+  racer1_id: 1
+  racer2_id: 1
+  car_number1: MyString
+  car_number2: MyString
+  team_country: MyString
+
+two:
+  team_name: MyString
+  motor_manufacturer: MyString
+  racer1_id: 1
+  racer2_id: 1
+  car_number1: MyString
+  car_number2: MyString
+  team_country: MyString

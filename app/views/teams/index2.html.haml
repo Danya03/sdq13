@@ -1,0 +1,28 @@
+%h1= t('headers.teams.index')
+%table.table-striped.table-hover
+  %thead
+    %tr
+      %th= Team.human_attribute_name(:team_name)
+      %th= Team.human_attribute_name(:motor_manufacturer)
+      %th= Team.human_attribute_name(:racer1_id)
+      %th= Team.human_attribute_name(:racer2_id)
+      %th= Team.human_attribute_name(:car_number1)
+      %th= Team.human_attribute_name(:car_number2)
+      %th= Team.human_attribute_name(:team_country)
+  %tbody
+    - @teams.each do |team|
+      %tr
+        %td{:data => {:label => Team.human_attribute_name(:team_name)}}
+          = team.team_name
+        %td{:data => {:label => Team.human_attribute_name(:motor_manufacturer)}}
+          = team.motor_manufacturer
+        %td{:data => {:label =>  Team.human_attribute_name(:racer1_id)}}
+          = Racer.find(team.racer1_id).surname + " " +  Racer.find(team.racer1_id).firstname
+        %td{:data => {:label =>  Team.human_attribute_name(:racer2_id)}}
+          = Racer.find(team.racer2_id).surname + " " +  Racer.find(team.racer2_id).firstname
+        %td{:data => {:label => Team.human_attribute_name(:car_number1)}}
+          = team.car_number1
+        %td{:data => {:label => Team.human_attribute_name(:car_number2)}}
+          = team.car_number2
+        %td{:data => {:label => Team.human_attribute_name(:team_country)}}
+          = team.team_country

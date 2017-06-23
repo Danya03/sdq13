@@ -1,0 +1,196 @@
+%table
+  %thead
+    %tr
+      %th Payment
+      %th Issue data
+      %th Amount
+      %th Period
+  %tbody
+    %tr
+      %td{:data => {:label => "Payment"}}
+        Payment #1
+      %td{:data => {:label => "Issue data"}}
+        02/01/2015
+      %td{:data => {:label => "Amount"}}
+        $2,311
+      %td{:data => {:label => "Period"}}
+        01/01/2015 - 01/31/2015
+    %tr
+      %td{:data => {:label => "Payment"}}
+        Payment #2
+      %td{:data => {:label => "Issue data"}}
+        03/01/2015
+      %td{:data => {:label => "Amount"}}
+        $3,211
+      %td{:data => {:label => "Period"}}
+        02/01/2015 - 02/28/2015
+
+
+
+= form_tag search_racers_path(), method: :get do
+  .well
+    .row
+      .col-md-5.c
+        .row
+          .col-md-12.my_head
+            Поиск по атрибутам пилота
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[surname]','Фамилия'
+              = text_field_tag 'search[surname]', params['search']['surname'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[firstname]','Имя'
+              =text_field_tag 'search[firstname]', params['search']['firstname'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              =label_tag 'search[bday]','Дата рождения'
+              %dd
+                %div
+                  .input-group.data.datapicker
+                    =text_field_tag 'search[bday]', params['search']['bday'], class: 'form-control'
+                    %span.input-group-addon
+                      %span.glyphicon.glyphicon-calendar
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[country]','Место рождения'
+              =select_tag 'search[country]',  options_for_select(@countries),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              =label_tag 'search[number_of_wins]','Количество побед'
+              =text_field_tag 'search[number_of_wins]', params['search']['number_of_wins'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              =submit_tag 'Искть'
+
+      .col-md-1
+
+      .col-md-5.my_head.c
+        .row
+          .col-md-12.my_head
+            Поиск по атрибутам команды
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[team_name]','Название команды'
+              =select_tag 'search[team_name]',  options_for_select(@teams),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[motor_manufacturer]','Производитель мотора'
+              =select_tag 'search[motor_manufacturer]',  options_for_select(@motor_manufacturers),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[car_number1]','Номер машины первого гонщика'
+              =select_tag 'search[car_number1]',  options_for_select(@n1),{ include_blank: true, class: 'form-control'}
+
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[car_number2]','Номер машины второго гонщика'
+              =select_tag 'search[car_number2]', options_for_select(@n2),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[team_country]','Страна команды'
+              =select_tag 'search[team_country]', options_for_select(@team_countries),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[racer1_id]','Является первым гонщиком'
+              =check_box_tag 'search[racer1_id]'
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[racer2_id]','Является вторым гонщиком'
+              =check_box_tag 'search[racer2_id]'
+
+
+-# %h2 Результаты поиска
+-# %table.responstable
+-#   %tr
+-#     %th №
+-#     %th{:data => {:th => "Driver details"}}}
+-#       %span
+-#         First name
+-#     %th
+-#       Surname
+-#     %th
+-#       Surname data of birth
+-#     %th
+-#       Relationship
+-#   %tr
+-#     %td
+-#       1
+-#     %td  Steve
+-#     %td Foo
+-#     %td 01/01/1978
+-#     %td Policyholder
+-#   %tr
+-#     %td 2
+-#     %td Steffie
+-#     %td Foo
+-#     %td 01/01/1978
+-#     %td Spouse
+
+-# %table{class: "rwd-table"}}
+-#   %tr
+-#     %th
+-#       Movie Title
+-#     %th
+-#       Genre
+-#     %th
+-#       Year
+-#     %th
+-#       Gross
+-#   %tr
+-#     %td {:data => {th: "Movie Title"}}}
+-#       Star Wars
+-#     %td {:data => {th: "Genre"}}}
+-#       Adventure, Sci-fi
+-#     %td {:data => {th: "Year"}}}
+-#       1977
+-#     %td {:data => {th: "Gross"}}}
+-#       $460,935,665
+-#   %tr
+-#     %td {:data => {:th => "Movie Title"}}}
+-#       Howard The Duck
+-#     %td {:data => {:th => "Genre"}}}
+-#       Comedy
+-#     %td {:data => {:th => "Year"}}}
+-#       1986
+-#     %td {:data => {:th => "Gross"}}}
+-#       $16,295,774
+-#   %tr
+-#     %td {:data => {:th => "Movie Title"}}}
+-#       American Graffiti
+-#     %td {:data => {:th => "Genre"}}}
+-#       Comedy, Drama
+-#     %td {:data => {:th => "Year"}}}
+-#       1973
+-#     %td {:data => {:th => "Gross"}}}
+-#       $115,000,000
+
+  %table.table.table-hover.table-striped.table-responsive
+    %thead
+      %tr
+        %th= Racer.human_attribute_name(:surname)
+        %th= Racer.human_attribute_name(:firstname)
+        %th= Racer.human_attribute_name(:bday)
+        %th= Racer.human_attribute_name(:country)
+        %th= Racer.human_attribute_name(:number_of_wins)
+    %tbody
+      - @racers.each do |racer|
+        %tr
+          %td = racer.surname
+          %td = racer.firstname
+          %td = racer.bday
+          %td = racer.country
+          %td = racer.number_of_wins

@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = @role.name
+  %li
+    = link_to 'Роли', roles_path
+  %li
+    Администрирование
+%h1= t('headers.roles.edit')
+= render 'form'
+
+= link_to 'Показать', @role

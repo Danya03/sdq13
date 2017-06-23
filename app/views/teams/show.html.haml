@@ -1,0 +1,36 @@
+=breadcrumb_tag do
+  %li.active
+    = @team.team_name
+  %li
+    = link_to t('headers.teams.index'), teams_path
+  %li
+    Редактирование
+%h1= @team.team_name
+
+%dl
+  %dt= Team.human_attribute_name(:team_name)
+  %dd= @team.team_name
+
+  %dt= Team.human_attribute_name(:motor_manufacturer)
+  %dd= @team.motor_manufacturer
+
+  %dt= Team.human_attribute_name(:racer1_id)
+  %dd= Racer.find(@team.racer1_id).surname + " " +  Racer.find(@team.racer1_id).firstname
+
+  %dt= Team.human_attribute_name(:racer2_id)
+  %dd= Racer.find(@team.racer2_id).surname + " " + Racer.find(@team.racer2_id).firstname
+
+  %dt= Team.human_attribute_name(:car_number1)
+  %dd= @team.car_number1
+
+  %dt= Team.human_attribute_name(:car_number2)
+  %dd= @team.car_number2
+
+  %dt= Team.human_attribute_name(:team_country)
+  %dd= @team.team_country
+
+
+
+
+= link_to 'Редактировать', edit_team_path(@team), class: "btn btn-primary"
+= link_to 'Назад', teams_path, class: "btn btn-primary"

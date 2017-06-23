@@ -1,0 +1,40 @@
+%h1= t('headers.racers.index')
+%table.table-striped.table-hover
+  %caption
+    = link_to new_racer_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.racer')
+  %thead
+    %tr
+      %th= Racer.human_attribute_name(:surname)
+      %th= Racer.human_attribute_name(:firstname)
+      %th= Racer.human_attribute_name(:bday)
+      %th= Racer.human_attribute_name(:country)
+      %th= Racer.human_attribute_name(:number_of_wins)
+      %th
+
+  %tbody
+    - @racers.each do |racer|
+      %tr
+        %td{:data => {:label => (Racer.human_attribute_name(:surname))}}
+          = racer.surname
+        %td{:data => {:label => (Racer.human_attribute_name(:firstname))}}
+          = racer.firstname
+        %td{:data => {:label => (Racer.human_attribute_name(:bday))}}
+          = racer.bday
+        %td{:data => {:label => (Racer.human_attribute_name(:country))}}
+          = racer.country
+        %td{:data => {:label => (Racer.human_attribute_name(:number_of_wins))}}
+          = racer.number_of_wins
+        %td.right
+          = link_to racer, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          = link_to edit_racer_path(racer), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to racer, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.racer') },
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')

@@ -1,0 +1,155 @@
+= form_tag search_racers_path(), method: :get do
+  .well
+    .row
+      .col-md-5.c
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[surname]','Фамилия'
+              = text_field_tag 'search[surname]', params['search']['surname'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[firstname]','Имя'
+              =text_field_tag 'search[firstname]', params['search']['firstname'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              =label_tag 'search[bday]','Дата рождения'
+              %dd
+                %div
+                  .input-group.date.datepicker
+                    =text_field_tag 'search[bday]', params['search']['bday'], class: 'form-control'
+                    %span.input-group-addon
+                      %span.glyphicon.glyphicon-calendar
+        .row
+          .col-md-12.simple
+            .form-group
+              = label_tag 'search[country]','Место рождения'
+              =select_tag 'search[country]',  options_for_select(@countries),{ include_blank: true, class: 'form-control'}
+        .row
+          .col-md-12.simple
+            .form-group
+              =label_tag 'search[number_of_wins]','Количество побед'
+              =text_field_tag 'search[number_of_wins]', params['search']['number_of_wins'], class: 'form-control'
+        .row
+          .col-md-12.simple
+            .form-group
+              =submit_tag 'Искать', class: 'btn btn-danger'
+
+
+- if  @racers.size>0
+  %h2 Результаты поиска
+  %table
+    %thead
+      %tr
+        %th= Racer.human_attribute_name(:surname)
+        %th= Racer.human_attribute_name(:firstname)
+        %th= Racer.human_attribute_name(:bday)
+        %th= Racer.human_attribute_name(:country)
+        %th= Racer.human_attribute_name(:number_of_wins)
+    %tbody
+      - @racers.each do |racer|
+        %tr
+          %td{:data => {:label => (Racer.human_attribute_name(:surname))}}
+            = racer.surname
+          %td{:data => {:label => (Racer.human_attribute_name(:firstname))}}
+            = racer.firstname
+          %td{:data => {:label => (Racer.human_attribute_name(:bday))}}
+            = racer.bday
+          %td{:data => {:label => (Racer.human_attribute_name(:country))}}
+            = racer.country
+          %td{:data => {:label => (Racer.human_attribute_name(:number_of_wins))}}
+            = racer.number_of_wins
+
+
+
+
+-# .row
+-#   .col-md-2.head
+-#     =Racer.human_attribute_name(:surname)
+-#   .col-md-2.head
+-#     =Racer.human_attribute_name(:firstname)
+-#   .col-md-2.head
+-#     =Racer.human_attribute_name(:bday)
+-#   .col-md-2.head
+-#     =Racer.human_attribute_name(:country)
+-#   .col-md-2.head
+-#     =Racer.human_attribute_name(:number_of_wins)
+-# - @racers.each do |racer|
+-#     .row
+-#       .col-md-2.head
+-#         =racer.surname
+-#       .col-md-2.head
+-#           =racer.firstname
+-#       .col-md-2.head
+-#           =racer.bday
+-#       .col-md-2.head
+-#           =racer.country
+-#       .col-md-2.head
+-#           =racer.number_of_wins
+
+
+-# = form_tag search_racers_path(), method: :get do
+-#   .row
+-#     .col-md-6
+-#       .form-group
+-#         = label_tag 'search[surname]','Фамилия'
+-#         = text_field_tag 'search[surname]', params['search']['surname'], class: 'form-control'
+-#     .col-md-6
+-#       .form-group
+-#         = label_tag 'search[team_name]','Название команды'
+-#         =select_tag 'search[team_name]',  options_for_select(@teams),{ include_blank: true, class: 'form-control'}
+-#   .row
+-#     .col-md-6
+-#       .form-group
+-#         = label_tag 'search[firstname]','Имя'
+-#         =text_field_tag 'search[firstname]', params['search']['firstname'], class: 'form-control'
+-#
+-#
+-#   .row
+-#     .col-md-6
+-#       .form-group
+-#         =label_tag 'search[bday]','Дата рождения'
+-#         %dd
+-#           %div
+-#             .input-group.date.datepicker
+-#               =text_field_tag 'search[bday]', params['search']['bday'], class: 'form-control'
+-#               %span.input-group-addon
+-#                 %span.glyphicon.glyphicon-calendar
+-#
+-#
+-#   .row
+-#     .col-md-6
+-#       .form-group
+-#         = label_tag 'search[country]','Место рождения'
+-#         =select_tag 'search[country]',  options_for_select(@countries),{ include_blank: true, class: 'form-control'}
+-#
+-#   .row
+-#     .col-md-6
+-#       .form-group
+-#         =label_tag 'search[number_of_wins]','Количество побед'
+-#         =text_field_tag 'search[number_of_wins]', params['search']['number_of_wins'], class: 'form-control'
+-#     .col-md-6
+-#       .form-group
+-#         = label_tag 'search[team_country]','Страна команды'
+-#         =select_tag 'search[team_country]', options_for_select(@team_countries),{ include_blank: true, class: 'form-control'}
+-#   %hr
+-#   %h2 Результаты поиска
+-#
+-#   %table.table.table-hover.table-striped.table-responsive
+-#     %thead
+-#       %tr
+-#         %th= Racer.human_attribute_name(:surname)
+-#         %th= Racer.human_attribute_name(:firstname)
+-#         %th= Racer.human_attribute_name(:bday)
+-#         %th= Racer.human_attribute_name(:country)
+-#         %th= Racer.human_attribute_name(:number_of_wins)
+-#     %tbody
+-#       - @racers.each do |racer|
+-#         %tr
+-#           %td= racer.surname
+-#           %td= racer.firstname
+-#           %td= racer.bday
+-#           %td= racer.country
+-#           %td= racer.number_of_wins

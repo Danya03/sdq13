@@ -1,0 +1,19 @@
+%h1= @racer.surname+@racer.try(:firstname)
+%dl
+  %dt= Racer.human_attribute_name(:surname)
+  %dd=  @racer.surname
+
+  %dt= Racer.human_attribute_name(:firstname)
+  %dd=  @racer.firstname
+
+  %dt= Racer.human_attribute_name(:bday)
+  %dd=  @racer.bday
+
+  %dt= Racer.human_attribute_name(:country)
+  %dd=  @racer.country
+
+  %dt= Racer.human_attribute_name(:number_of_wins)
+  %dd=  @racer.number_of_wins
+
+= link_to 'Редактировать', edit_racer_path(@racer), class: "btn btn-primary"
+= link_to 'Назад', racers_path, class: "btn btn-primary"
